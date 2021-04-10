@@ -34,26 +34,116 @@ const render = require("./lib/htmlRenderer");
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
 
-const questions = [
-    {
-        type: "input",
-        message: "Enter employee name",
-        name: "empName",
-    },
-    {
-        type: "input",
-        message: "Enter employee email",
-        name: "empEmail",
-    },
-    {
-        type: "input",
-        message: "Enter employee id",
-        name: "empId",
-    },
-    {
-        type: "list",
-        message: "Select employee role",
-        name: "empRole",
-        choices: ["Intern", "Engineer", "Manager"]
-    },
-];
+const employeeSummary = [];
+
+function init() {
+    inquirer.prompt(
+        [
+            {
+                type: "input",
+                message: "Enter employee name",
+                name: "empName",
+            },
+            {
+                type: "input",
+                message: "Enter employee email",
+                name: "empEmail",
+            },
+            {
+                type: "input",
+                message: "Enter employee id",
+                name: "empId",
+            },
+            {
+                type: "list",
+                message: "Select employee role",
+                name: "empRole",
+                choices: ["Intern", "Engineer", "Manager"]
+            },
+        ]
+    )
+    .then((res) => {
+        const empRole = res.empRole
+        if (empRole === "Intern") {
+            inquirer.prompt(
+                [
+                    {
+                        type: "input",
+                        message: "Enter intern's school.",
+                        name: "intSchool",
+                    },
+                    {
+                        type: "list",
+                        message: "Select next task",
+                        name: "task",
+                        choices: ["Insert new employee", "Exit"]
+                    },
+                ]
+            )
+            .then((res) => {
+                const intEmployee = new Intern(res.empName, res.empID, res.empEmail, res.intSchool,)
+                employeeSummary.push(intEmployee)
+
+                if(res.task === "Insert new employee") {
+                    init();
+                } else {
+                    createEmployeeSummary();
+                }
+            })
+
+        } else if (empRole === "Engineer") {
+            inquirer.prompt(
+                [
+                    {
+                        type: "input",
+                        message: "Enter engineer's github.",
+                        name: "engGithub",
+                    },
+                    {
+                        type: "list",
+                        message: "Select next task",
+                        name: "task",
+                        choices: ["Insert new employee", "Exit"]
+                    },
+                ]
+            )
+            .then((res) => {
+                const engEmployee = new Engineer(res.empName, res.empID, res.empEmail, res.engGithub)
+                employeeSummary.push(engEmployee)
+
+                if(res.task === "Insert new employee") {
+                    init();
+                } else {
+                    createEmployeeSummary();
+                }
+            })
+
+        } else if (empRole === "Manager") {
+            inquirer.prompt(
+                [
+                    {
+                        type: "input",
+                        message: "Enter manager's office number.",
+                        name: "mngOffice",
+                    },
+                    {
+                        type: "list",
+                        message: "Select next task",
+                        name: "task",
+                        choices: ["Insert new employee", "Exit"]
+                    },
+                ]
+            )
+            .then((res) => {
+                const mngEmployee = new Manager(res.empName, res.empID, res.empEmail, res.mngOffice)
+                employeeSummary.push(mngEmployee)
+
+                if(res.task === "Insert new employee") {
+                    init();
+                } else {
+                    createEmployeeSummary();
+                }
+            })
+        }
+    })
+}
