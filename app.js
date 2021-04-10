@@ -39,21 +39,21 @@ const employeeSummary = [];
 function init() {
     inquirer.prompt(
         [
-            {
-                type: "input",
-                message: "Enter employee name",
-                name: "empName",
-            },
-            {
-                type: "input",
-                message: "Enter employee email",
-                name: "empEmail",
-            },
-            {
-                type: "input",
-                message: "Enter employee id",
-                name: "empId",
-            },
+            // {
+            //     type: "input",
+            //     message: "Enter employee name",
+            //     name: "empName",
+            // },
+            // {
+            //     type: "input",
+            //     message: "Enter employee email",
+            //     name: "empEmail",
+            // },
+            // {
+            //     type: "input",
+            //     message: "Enter employee id",
+            //     name: "empId",
+            // },
             {
                 type: "list",
                 message: "Select employee role",
@@ -69,6 +69,21 @@ function init() {
                 [
                     {
                         type: "input",
+                        message: "Enter employee name",
+                        name: "empName",
+                    },
+                    {
+                        type: "input",
+                        message: "Enter employee email",
+                        name: "empEmail",
+                    },
+                    {
+                        type: "input",
+                        message: "Enter employee id",
+                        name: "empId",
+                    },
+                    {
+                        type: "input",
                         message: "Enter intern's school.",
                         name: "intSchool",
                     },
@@ -81,7 +96,7 @@ function init() {
                 ]
             )
             .then((res) => {
-                const intEmployee = new Intern(res.empName, res.empID, res.empEmail, res.intSchool,)
+                const intEmployee = new Intern(res.empName, res.empId, res.empEmail, res.intSchool,)
                 employeeSummary.push(intEmployee)
 
                 if(res.task === "Insert new employee") {
@@ -96,6 +111,21 @@ function init() {
                 [
                     {
                         type: "input",
+                        message: "Enter employee name",
+                        name: "empName",
+                    },
+                    {
+                        type: "input",
+                        message: "Enter employee email",
+                        name: "empEmail",
+                    },
+                    {
+                        type: "input",
+                        message: "Enter employee id",
+                        name: "empId",
+                    },
+                    {
+                        type: "input",
                         message: "Enter engineer's github.",
                         name: "engGithub",
                     },
@@ -108,7 +138,7 @@ function init() {
                 ]
             )
             .then((res) => {
-                const engEmployee = new Engineer(res.empName, res.empID, res.empEmail, res.engGithub)
+                const engEmployee = new Engineer(res.empName, res.empId, res.empEmail, res.engGithub)
                 employeeSummary.push(engEmployee)
 
                 if(res.task === "Insert new employee") {
@@ -123,6 +153,21 @@ function init() {
                 [
                     {
                         type: "input",
+                        message: "Enter employee name",
+                        name: "empName",
+                    },
+                    {
+                        type: "input",
+                        message: "Enter employee email",
+                        name: "empEmail",
+                    },
+                    {
+                        type: "input",
+                        message: "Enter employee id",
+                        name: "empId",
+                    },
+                    {
+                        type: "input",
                         message: "Enter manager's office number.",
                         name: "mngOffice",
                     },
@@ -135,7 +180,7 @@ function init() {
                 ]
             )
             .then((res) => {
-                const mngEmployee = new Manager(res.empName, res.empID, res.empEmail, res.mngOffice)
+                const mngEmployee = new Manager(res.empName, res.empId, res.empEmail, res.mngOffice)
                 employeeSummary.push(mngEmployee)
 
                 if(res.task === "Insert new employee") {
