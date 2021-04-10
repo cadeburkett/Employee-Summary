@@ -147,3 +147,12 @@ function init() {
         }
     })
 }
+
+const createEmployeeSummary = () => {
+    fs.writeFile(outputPath, render(employeeSummary), (err) => {
+        if (err) throw err;
+        console.log("Employee Summary created!");
+    })
+};
+
+init();
