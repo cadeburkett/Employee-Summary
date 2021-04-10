@@ -1,7 +1,7 @@
 # Employee-Summary
 
 ## Description
-Employee summary template engine .
+Employee summary template engine that allows the user to input employees under various roles using the inquirer npm package in the integrated terminal from VSCode.
 
 ![Screen Shot 2021-04-09 at 22 28 14](https://user-images.githubusercontent.com/71572375/114259467-f29b6300-9982-11eb-8a57-206280c86864.png)
 
